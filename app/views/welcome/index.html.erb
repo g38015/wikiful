@@ -1,4 +1,21 @@
-<h1>Welcome to Wikiful!</h1>
-
+<h1>Welcome to Wikiful! Here are some recent articles</h1>
+<div>
+	<h3>5 Most recent articles</h3>
+	
+	<% @recent.each do |recent| %>
+		
+	<div>
+    <h3><%= link_to recent.title, recent %></h3>
+  	<p>Published on <%= recent.created_at.strftime('%b %d, %Y') %></p>
+    
+    <p>Filed under: <% recent.categories.each do |category| %>
+      <%= category.name %>&nbsp;
+      <% end %>
+    </p>
+    <p><%= truncate(recent.content, length: 200) %></p>
+  </div>
+	
+	<% end %>
+</div>
 
 <%= link_to "Articles", articles_path %>
