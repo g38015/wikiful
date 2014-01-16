@@ -22,10 +22,10 @@
   <div class="row">
 
   	<% if flash[:notice] %>
-	<div class="alert alert-info">
-		<p><%= flash[:notice] %></p>
-	</div>
-	<% end %>
+	   <div class="span9">
+		  <p class="alert alert-info"><%= flash[:notice] %></p>
+	   </div>
+	 <% end %>
 	
     <div class="span9"><%= yield %></div>
     <div class="span3 sidebar">
