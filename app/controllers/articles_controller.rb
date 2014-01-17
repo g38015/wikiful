@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+	before_filter :authorize, only: [:new]
+
 	def index
 		@articles = Article.order(updated_at: :desc).limit(25)
 	end
@@ -15,6 +17,7 @@ class ArticlesController < ApplicationController
 	def create
 		@article = Article.new(article_params)
 		if @article.save
+			#session[:user_id] = @user.id
 			redirect_to @article, notice: "Article #{@article.title} has been created"
 		else
 			render :new
